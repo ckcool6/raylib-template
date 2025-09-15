@@ -3,10 +3,10 @@ project(my_raylib_game C)
 set(CMAKE_C_STANDARD 99)
 
 
-# 头文件
+# 添加头文件路径
 include_directories("./sources/include")
 
-# 库
+# 添加库路径
 link_directories("./sources/lib")
 
 # 编译
