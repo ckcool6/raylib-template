@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "stdio.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -18,7 +19,6 @@ int main(void)
     int ballRadius = 20;
 
     bool pause = 0;
-    int framesCounter = 0;
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //----------------------------------------------------------
@@ -39,7 +39,6 @@ int main(void)
             if ((ballPosition.x >= (GetScreenWidth() - ballRadius)) || (ballPosition.x <= ballRadius)) ballSpeed.x *= -1.0f;
             if ((ballPosition.y >= (GetScreenHeight() - ballRadius)) || (ballPosition.y <= ballRadius)) ballSpeed.y *= -1.0f;
         }
-        else framesCounter++;
         //-----------------------------------------------------
 
         // Draw
@@ -52,7 +51,7 @@ int main(void)
             DrawText("PRESS SPACE to PAUSE BALL MOVEMENT", 10, GetScreenHeight() - 25, 20, LIGHTGRAY);
 
             // On pause, we draw a blinking message
-            if (pause && ((framesCounter/30)%2)) DrawText("PAUSED", 350, 200, 30, GRAY);
+            if (pause) DrawText("PAUSED", 350, 200, 30, GRAY);
 
             DrawFPS(10, 10);
 
