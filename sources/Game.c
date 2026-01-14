@@ -39,7 +39,6 @@ void game_update(Game *this, Ball *ball)
             ball->speed.y *= -1.0f;
         }
     }
-
 }
 
 void game_draw(Ball *ball)
@@ -49,6 +48,8 @@ void game_draw(Ball *ball)
 
     ball_draw(ball);
 
+    DrawText(TextFormat("x is %.1f", ball->position.x), 150, 10, 20, BLACK);
+    DrawText(TextFormat("y is %.1f", ball->position.y), 500, 10, 20, BLACK);
     DrawText("PRESS SPACE to PAUSE BALL MOVEMENT", 10, GetScreenHeight() - 25, 20, LIGHTGRAY);
 
     DrawFPS(10, 10);
