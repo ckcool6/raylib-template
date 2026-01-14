@@ -1,0 +1,4 @@
+gcc -c .\Ball.c -I./include/ -L./lib -lraylib  
+gcc -c .\Game.c -I./include/ -L./lib -lraylib  
+ 
+gcc .\main.c .\Game.o .\Ball.o -I.\include\ -L .\lib\ -lraylib -lopengl32 -lgdi32 -lwinmm
