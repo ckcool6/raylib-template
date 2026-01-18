@@ -1,20 +1,20 @@
+## windows
+
 CFLAGS := -Wall -g -O2 -I./include
 LDIR = -L./lib
 LIBS = -lraylib -lopengl32 -lgdi32 -lwinmm
 
-all: main.c Game.o Ball.o
-	@echo start building...
-	@gcc .\main.c .\Game.o .\Ball.o ${CFLAGS} ${LDIR} ${LIBS}
+OBJS = Game.o Ball.o
 
-Ball.o : Ball.c Ball.h  
-	@gcc -c .\Ball.c ${CFLAGS} ${LDIR} -lraylib  
+all: main.c ${OBJS}
+	@echo building success
+	@gcc  main.c ${OBJS} ${CFLAGS} ${LDIR} ${LIBS}
 
-Game.o : Game.c Game.h
-	@gcc -c .\Game.c ${CFLAGS} ${LDIR} -lraylib
+%.o : %.c
+	@gcc -c $< ${CFLAGS} ${LDIR} -lraylib -o $@ 
 
-
-.PHONY: clean
+.PHONY: clean 
 
 clean:
-	@echo start clean...
+	@echo clean completed
 	@rm  Game.o Ball.o a.exe 
