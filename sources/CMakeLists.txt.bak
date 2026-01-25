@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 4.0)
+project(untitled C)
+
+set(CMAKE_C_STANDARD 11)
+
+# objs target
+add_library(objs STATIC ball.c game.c)
+target_include_directories(objs PUBLIC include)
+target_link_directories(objs PUBLIC lib)
+target_link_libraries(objs PUBLIC raylib)
+
+# test target
+add_executable(test main.c)
+target_include_directories(test PUBLIC include)
+target_link_directories(test PUBLIC lib)
+target_link_libraries(test PUBLIC objs raylib opengl32 gdi32 winmm)
